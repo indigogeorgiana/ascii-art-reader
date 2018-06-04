@@ -1,6 +1,4 @@
-module.exports = {
-  listFiles
-}
+
 const util = require('./util.js')
 const lib = require('./lib.js')
 
@@ -11,6 +9,7 @@ function main () {
   util.print(null, '--------')
   util.mainMenu(asciiNameArr, lib.listFiles)
   lib.userInput(asciiNameArr)
+
 }
 
 main()

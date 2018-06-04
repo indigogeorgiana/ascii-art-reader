@@ -1,7 +1,8 @@
 module.exports = {
   getData,
   print,
-  mainMenu
+  mainMenu,
+  getFilePath
 }
 const fs = require('fs')
 const path = require('path')
@@ -13,6 +14,12 @@ function getData (file, cb) {
   })
 }
 
+function getFilePath (asciiNameArr, data) {
+  let userNum = Number(data)
+  let fileName = asciiNameArr[userNum]
+  let filePath = path.join(__dirname, '/data', fileName)
+  return filePath
+}
 // similar to print function but it accepts errors, since for some reason the callbacks for file operations need it.
 function print (err, data) {
   if (err) {
