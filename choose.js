@@ -1,6 +1,8 @@
 const fs = require('fs')
 const readline = require('readline')
-const options = require('./binds.js')
+const path = require('path')
+const options = require('./options')
+const show = require('./show.js')
 
 function pressEnter () {
   const rl = readline.createInterface({
@@ -9,18 +11,24 @@ function pressEnter () {
   })
 
   rl.question('Option: ', function (input) {
-    // rl.close()
-
     // Call any functions you like here. For example:
-    //getData(input)
+    rl.close()
+    getData(Number(input) - 1, (err, data) => {
+      show(data)
+    })
   })
 }
 
-function getData(file, cb) {
-  const filepath = options[file].join(__dirname, file)
-  fs.readFile(filepath, 'utf8', (err, data) => {
-    cb(err, data)
-  })
+function getData (input, cb) {
+  const filepath = path.join(__dirname, options[input])
+  fs.readFile(filepath, 'utf8', cb)
 }
+// function showData (err, data) {
+//   if (err) {
+//     console.error(err)
+//   } else {
+//     console.log(data)
+//   }
+// }
 
 module.exports = pressEnter

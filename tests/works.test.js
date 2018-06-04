@@ -9,3 +9,4 @@ test('Gives a welcome', () => {
   const actual = dog.welcome()
   expect(actual).toBe(expected)
 })
+
