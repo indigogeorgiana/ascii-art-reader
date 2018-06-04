@@ -20,16 +20,7 @@ function exit (input) {
     process.exit(1)
   }
 }
-//not working yetq
 
-function comment (input) {
-  if (input === 'c') {
-    fs.writeFile('data/comments.txt', (err) => {
-      if (err) throw err
-      console.log('your comment has been saved')
-    })
-  }
-}
 
 // 3. List Ascii Art
 function listOfArt () {
