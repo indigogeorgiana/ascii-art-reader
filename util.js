@@ -1,6 +1,7 @@
 module.exports = {
   getData,
-  print
+  print,
+  mainMenu
 }
 const fs = require('fs')
 const path = require('path')
@@ -19,4 +20,14 @@ function print (err, data) {
   } else {
     console.log(data)
   }
+}
+// main menu print
+function mainMenu (asciiNameArr, callBack) {
+  print(null, '\n')
+  print(null, 'Choose an artwork to display, or:')
+  print(null, "'c' to comment")
+  print(null, "'e' to erase comments")
+  print(null, "'v' to view comments")
+  print(null, "'q' to quit")
+  callBack(asciiNameArr, print)
 }
