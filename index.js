@@ -80,6 +80,26 @@ function userInput () {
       openAsciiFile('pohutukawa.txt', showFile)
     }
   })
+  continueArt()
+}
+
+function continueArt () {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  })
+
+  rl.question('Would you like to look at more art? y/n \n', (input) => {
+    rl.close()
+    if (input === 'y') {
+      getAsciiFiles('data', showFiles)
+      userInput()
+    } else if (input === 'n') {
+      process.exit()
+    } else {
+      console.log('Please press y for yes, n for no')
+    }
+  })
 }
 
 getAsciiFiles('data', showFiles)
