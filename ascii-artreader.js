@@ -62,8 +62,6 @@ function pressEnter () {
   })
 }
 
-
-
 welcome()
 listOfAscii()
 pressEnter()

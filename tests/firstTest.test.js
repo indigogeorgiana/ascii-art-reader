@@ -4,11 +4,8 @@ test('allSystemsGo ', () => {
   expect(true).toBeTruthy()
 })
 
-test('welcome statment', () => {
-  // arrange
-  const expected = 'welcome'
-  // act
-  const actual = index.welcome
-  // assert
+test('pressEnter', () => {
+  
   expect(actual).toBe(expected)
-})
+  done()
+}
