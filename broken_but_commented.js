@@ -1,9 +1,3 @@
-module.exports = {
-  listFiles,
-  
-}
-
-
 const readline = require('readline')
 const fs = require('fs')
 const path = require('path')
@@ -25,12 +19,12 @@ function userInput (asciiNameArr) {
     input: process.stdin,
     output: process.stdout
   })
-  inputReader.question('Choice > ', (data) => {
-    getData(asciiNameArr[Number(data) - 1], showData)
+  inputReader.question('Choice > ', (data, asciiNameArr) => {
+    if (data !== isNaN(Number(data))) { optionsFromInput(data, asciiNameArr) }
+    if (data === 'q') { process.exit() }
     inputReader.close()
   })
 }
-
 // takes the ascii art array and iterates over it, printing it out to the console with the number that represents it
 function listFiles (asciiNameArr) {
   for (let i = 0; i < asciiNameArr.length; i++) {
@@ -64,6 +58,9 @@ function mainMenu (asciiNameArr) {
   print("'e' to erase comments")
   print("'v' to view comments")
   print("'q' to quit")
-  print('\n')
   listFiles(asciiNameArr)
+}
+// function to take the user input, manipulate it, and send it to where it needs to go
+function optionsFromInput (data, asciiNameArr) {
+  getData(asciiNameArr[Number(data) - 1], showData)
 }
