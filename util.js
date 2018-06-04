@@ -7,9 +7,8 @@ module.exports = {
 const fs = require('fs')
 const path = require('path')
 // takes a file name, creates the path to it, uses a readfile that is determined by the callback (in this case it is showData)
-function getData (file, cb) {
-  const filepath = path.join(__dirname, '/data', file)
-  fs.readFile(filepath, 'utf8', (err, data) => {
+function getData (filePath, cb) {
+  fs.readFile(filePath, 'utf8', (err, data) => {
     cb(err, data)
   })
 }

@@ -1,1 +1,2 @@
-Why is it that you can't return anything from the callback function to main in the 
+Why is it that you can't return anything from the callback function in the linereader.
+Is it a good idea to that a text input creator function and send the reader to main?

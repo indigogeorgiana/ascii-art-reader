@@ -13,7 +13,7 @@ function userInput (asciiNameArr) {
   })
   inputReader.question('Choice > ', (data) => {
     let filePath = util.getFilePath(asciiNameArr, data)
-    
+    util.getData(filePath, util.print)
 
     inputReader.close()
   })
