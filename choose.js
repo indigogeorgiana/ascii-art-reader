@@ -3,7 +3,9 @@ const readline = require('readline')
 const path = require('path')
 const options = require('./options')
 const show = require('./show.js')
-const menu = require('./dog.js')
+const erase = require('./erase.js')
+const showComments = require('./showComments.js')
+// const menu = require('./dog.js')
 
 function pressEnter (a) {
   const rl = readline.createInterface({
@@ -21,6 +23,12 @@ function pressEnter (a) {
           return pressEnter('Option: \n')
         })
       })
+    } else if (input === 'e') {
+      erase()
+      return pressEnter('Option: \n')
+    } else if (input === 'v') {
+      showComments()
+      return pressEnter('Option: \n')
     } else if (Number(input) !== NaN) {
       getData(Number(input) - 1, (err, data) => {
         if (err) throw err
@@ -48,12 +56,5 @@ function getData (input, cb) {
   const filepath = path.join(__dirname, options[input])
   fs.readFile(filepath, 'utf8', cb)
 }
-// function showData (err, data) {
-//   if (err) {
-//     console.error(err)
-//   } else {
-//     console.log(data)
-//   }
-// }
 
 module.exports = pressEnter
