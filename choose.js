@@ -3,18 +3,19 @@ const readline = require('readline')
 const path = require('path')
 const options = require('./options')
 const show = require('./show.js')
+const menu = require('./dog.js')
 
-function pressEnter () {
+function pressEnter (a) {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   })
-
   rl.question('Option: ', function (input) {
     // Call any functions you like here. For example:
-    rl.close()
     getData(Number(input) - 1, (err, data) => {
+      rl.close()
       show(data)
+      pressEnter()
     })
   })
 }

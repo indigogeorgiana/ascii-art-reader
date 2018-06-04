@@ -1,6 +1,7 @@
 const show = require('./show.js')
 
 const files = [
+  'dog.txt',
   'kea.txt',
   'kiwi.txt',
   'nikau.txt',

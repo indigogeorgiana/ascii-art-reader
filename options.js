@@ -1,4 +1,5 @@
 const options = [
+  './data/dog.txt',
   './data/kea.txt',
   './data/kiwi.txt',
   './data/nikau.txt',
