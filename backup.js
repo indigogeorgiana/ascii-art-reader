@@ -4,9 +4,7 @@ module.exports = {
   pressEnter,
   findIndex,
   listOfAsciiSync,
-  writeComment,
-  eraseComment,
-  viewComment
+  writeComment
 }
 var fs = require('fs')
 
@@ -78,36 +76,10 @@ function writeComment (arg) {
     fs.writeFileSync('fs.txt', input)
   })
 }
-// -------------------------------------------
-function eraseComment () {
-  const rl = readline2.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  })
 
-  rl.question('Add comment > ', function (input) {
-    rl.close()
-    // Call any functions you like here. For example:
-    fs.writeFileSync('fs.txt', input)
-  })
-}
-
-function viewComment () {
-  const rl = readline2.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  })
-
-  rl.question('Add comment > ', function (input) {
-    rl.close()
-    // Call any functions you like here. For example:
-    fs.writeFileSync('fs.txt', input)
-  })
-}
-// --------------------------------------
 const readline = require('readline')
 function pressEnter (arg) {
-  const rl = readline.createInterface({
+  const rl = readline2.createInterface({
     input: process.stdin,
     output: process.stdout
   })
@@ -118,28 +90,18 @@ function pressEnter (arg) {
     switch (input.trim()) {
       case '1':
         drawFunc(1)
-        pressEnter()
         break
       case '2':
         drawFunc(2)
-        pressEnter()
         break
       case '3':
         drawFunc(3)
-        pressEnter()
         break
       case '4':
         drawFunc(4)
-        pressEnter()
         break
       case 'c':
         writeComment('c')
-        break
-      case 'e':
-        eraseComment('e')
-        break
-      case 'v':
-        viewComment('v')
         break
       case 'q':
         console.log('Have a great day!')
