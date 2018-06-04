@@ -8,6 +8,7 @@ const path = require('path')
 const readline = require('readline')
 const getAsciiFiles = require('./getAsciiFiles')
 const openAsciiFile = require('./openAsciiFile')
+const addComment = require('./addComment')
 
 function welcome () {
   const message = 'Welcome to our page'
@@ -63,17 +64,31 @@ function continueArt () {
     output: process.stdout
   })
 
-  rl.question('Would you like to look at more art? y/n \n', (input) => {
+  rl.question('Would you like to look at more art? y/n \n Press c to leave a comment.', (input) => {
     rl.close()
     if (input === 'y') {
       getAsciiFiles('data', showFiles)
       userInput()
     } else if (input === 'n') {
       process.exit()
+    } else if (input === 'c') {
+      typeComment()
     } else {
       console.log('Please press y for yes, n for no')
       continueArt()
     }
+  })
+}
+
+function typeComment () {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  })
+
+  rl.question('Type your comment and press enter \n ', (input) => {
+    rl.close()
+    addComment(input)
   })
 }
 
