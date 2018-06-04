@@ -1,0 +1,17 @@
+{
+  "name": "ascii-art-reader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/mamaku-2018/ascii-art-reader.git",
+  "author": "Michael Mitchelson <michael.j.mitchelson@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^23.1.0",
+    "nodemon": "^1.17.5"
+  },
+  "scripts": {
+    "test": "jest --watchAll",
+    "start": "node index"
+  }
+
+}
