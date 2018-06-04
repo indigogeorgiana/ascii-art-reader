@@ -1,18 +1,16 @@
 module.exports = {
   listFiles,
-  
+
 }
 
-
+const util = require('./util.js')
 const readline = require('readline')
-const fs = require('fs')
-const path = require('path')
-
+const err = null
 // the main function, houses everything we'll be running apart for the imported modules
 function main () {
   const asciiNameArr = ['kea.txt', 'kiwi.txt', 'nikau.txt', 'pohutukawa.txt']
-  print('Welcome!')
-  print('--------')
+  util.print('Welcome!')
+  util.print('--------')
   mainMenu(asciiNameArr)
   userInput(asciiNameArr)
 }
@@ -26,7 +24,7 @@ function userInput (asciiNameArr) {
     output: process.stdout
   })
   inputReader.question('Choice > ', (data) => {
-    getData(asciiNameArr[Number(data) - 1], showData)
+    util.getData(asciiNameArr[Number(data) - 1], util.print)
     inputReader.close()
   })
 }
@@ -34,36 +32,17 @@ function userInput (asciiNameArr) {
 // takes the ascii art array and iterates over it, printing it out to the console with the number that represents it
 function listFiles (asciiNameArr) {
   for (let i = 0; i < asciiNameArr.length; i++) {
-    print((i + 1) + ': ' + asciiNameArr[i])
+    util.print((i + 1) + ': ' + asciiNameArr[i])
   }
 }
-// generic print function. not sure if we should try make a print that accepts errors as well with it.
-function print (printItem) {
-  console.log(printItem)
-}
-// takes a file name, creates the path to it, uses a readfile that is determined by the callback (in this case it is showData)
-function getData (file, cb) {
-  const filepath = path.join(__dirname, '/data', file)
-  fs.readFile(filepath, 'utf8', (err, data) => {
-    cb(err, data)
-  })
-}
-// similar to print function but it accepts errors, since for some reason the callbacks for file operations need it.
-function showData (err, data) {
-  if (err) {
-    console.error(err)
-  } else {
-    console.log(data)
-  }
-}
+
 // main menu print
 function mainMenu (asciiNameArr) {
-  print('\n')
-  print('Choose an artwork to display, or:')
-  print("'c' to comment")
-  print("'e' to erase comments")
-  print("'v' to view comments")
-  print("'q' to quit")
-  print('\n')
+  util.print(err, '\n')
+  util.print(err, 'Choose an artwork to display, or:')
+  util.print(err, "'c' to comment")
+  util.print(err, "'e' to erase comments")
+  util.print(err, "'v' to view comments")
+  util.print(err, "'q' to quit")
   listFiles(asciiNameArr)
 }
