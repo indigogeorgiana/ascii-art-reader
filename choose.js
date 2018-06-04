@@ -10,15 +10,39 @@ function pressEnter (a) {
     input: process.stdin,
     output: process.stdout
   })
-  rl.question('Option: ', function (input) {
-    // Call any functions you like here. For example:
-    getData(Number(input) - 1, (err, data) => {
+  rl.question(a, (input) => {
+    if (input === 'q') {
       rl.close()
-      show(data)
-      pressEnter()
-    })
+    } else if (input === 'c') {
+      rl.question(show('Enter comments:\n'), (inputCom) => {
+        fs.writeFile('./data/comments.txt', inputCom, (err) => {
+          if (err) throw err
+          show('Saved')
+          return pressEnter('Option: \n')
+        })
+      })
+    } else if (Number(input) !== NaN) {
+      getData(Number(input) - 1, (err, data) => {
+        if (err) throw err
+        show(data)
+        return pressEnter('Menu = enter\nAnother picture = a number\n')
+      })
+    }
   })
 }
+
+// function enter () {
+//   const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+//   })
+//   rl.question(a, function (input) {
+//     getData(Number(input) - 1, (err, data) => {
+//       show(data)
+//       // pressEnter('Menu = enter\nAnother picture = a number\n')
+//     })
+//   })
+// }
 
 function getData (input, cb) {
   const filepath = path.join(__dirname, options[input])

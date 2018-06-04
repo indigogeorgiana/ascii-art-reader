@@ -1,13 +1,7 @@
-
 const files = require('./files.js')
 const commands = require('./commands.js')
 const show = require('./show.js')
 const pressEnter = require('./choose.js')
-
-function welcome () {
-  show('\n' + 'Welcome to Dog, Bram!' + '\n')
-  menu()
-}
 
 function menu (a) {
   show(a)
@@ -15,9 +9,10 @@ function menu (a) {
   show('\n')
   files()
   show('\n')
-  pressEnter()
+  pressEnter('Option: ', (a) => {
+  })
 }
 
-welcome()
+menu('\n' + 'Welcome to Dog, Bram!' + '\n')
 
 module.exports = menu
