@@ -1,0 +1,17 @@
+{
+  "name": "asci",
+  "version": "1.0.0",
+  "description": "asci art",
+  "main": "ascii-artreader.js",
+  "repository": "https://github.com/mamaku-2018/ascii-art-reader.git",
+  "author": "eda",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watchAll ",
+    "start": "node ascii-artreader"
+  },
+  "dependencies": {
+    "jest": "^23.1.0",
+    "nodemon": "^1.17.5"
+  }
+}
