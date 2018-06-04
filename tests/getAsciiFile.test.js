@@ -1,10 +1,18 @@
-const index = require('../index.js')
+jest.mock('fs', () => {
+  return {
+    readdir: (path, cb) => {
+      cb(null, 'test response')
+    }
+  }
+})
 
-test('getting all text file within a dir ', () => {
-  const err = ''
-  const cb = index.showFiles (err, data)
-  const dir = 'data'
-  const expected = ['kea.txt', 'kiwi.txt', 'nikau.txt', 'pohutukawa.txt']
-  const actual = index.getAsciiFiles(dir, cb)
-  expect(actual).toMatch(expected)
+const getAsciiFiles = require('../getAsciiFiles.js')
+
+test('getting all text file within a dir ', (done) => {
+  const mockcb = jest.fn()
+  const dir = 'test'
+  getAsciiFiles(dir, mockcb)
+  const length = mockcb.mock.calls.length
+  expect(length).toBe(1)
+  done()
 })

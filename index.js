@@ -1,12 +1,12 @@
 module.exports = {
   welcome,
-  getAsciiFiles,
   showFiles
 }
 
 const fs = require('fs')
 const path = require('path')
 const readline = require('readline')
+const getAsciiFiles = require('./getAsciiFiles')
 
 function welcome () {
   const message = 'Welcome to our page'
@@ -14,12 +14,7 @@ function welcome () {
   return message
 }
 
-function getAsciiFiles (dir, cb) {
-  const dirPath = path.join(__dirname, 'data')
-  fs.readdir(dirPath, (err, data) => {
-    cb(err, data)
-  })
-}
+
 
 function openAsciiFile (file, cb) {
   const dirFile = path.join(__dirname, 'data', file)
@@ -37,10 +32,12 @@ function showFiles (err, data) {
     // console.log(data)
     // return data
     for (let entry in data) {
-      console.log (entry + ': ' + data[entry])
+      console.log(entry + ': ' + data[entry])
     }
   }
 }
+
+
 
 // const fileNames = []
 // console.log(fileNames)
@@ -51,7 +48,6 @@ function showFiles (err, data) {
 //   }
 // }
 
-
 function showFile (err, data) {
   if (err) {
     console.error(err)
@@ -59,7 +55,6 @@ function showFile (err, data) {
     console.log(data)
   }
 }
-
 
 function userInput () {
   const rl = readline.createInterface({
@@ -72,6 +67,7 @@ function userInput () {
     // console.log(input)
     if (input === '0') {
       openAsciiFile('kea.txt', showFile)
+      isDone = true
     } else if (input === '1') {
       openAsciiFile('kiwi.txt', showFile)
     } else if (input === '2') {
@@ -80,7 +76,6 @@ function userInput () {
       openAsciiFile('pohutukawa.txt', showFile)
     }
   })
-  continueArt()
 }
 
 function continueArt () {
@@ -103,4 +98,16 @@ function continueArt () {
 }
 
 getAsciiFiles('data', showFiles)
-userInput()
+// userInput()
+runArt()
+
+
+function runArt () {
+  let isDone = false
+  userInput()
+  isDone = true
+  console.log(isDone)
+  if (isDone === true) {
+    continueArt()
+  }
+}
